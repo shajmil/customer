@@ -1,0 +1,100 @@
+<!-- Primary -->
+<app-navbar  ></app-navbar>
+<div class="container-fluid pt-3">
+
+    
+    <h3 class=" text-dark ps-3">   <i class="fa fa-user " aria-hidden="true"></i> Customers</h3>
+
+    <div class="container-fluid  mt-5">
+
+        <div class="d-sm-flex justify-content-between">
+<div class="d-flex gap-5">
+    <a (click)="card()"> Card View</a>
+    <a (click)="list()"> List View</a>
+    <a (click)="new()"> New Customer</a>
+</div>
+<div>
+    <label for="search bg-text">filter</label>
+    <input class="form-control" type="text"  name="" [(ngModel)]="filter " (ngModelChange)="search()">
+    <p>{{filter}}</p>
+</div>
+
+
+
+        </div>
+
+
+<div class="container-fluid "*ngIf="cardStatus">
+
+    <div class="row mt-5 ">
+        <div class="col-md-6 col-lg-4 d-flex justify-content-center" *ngFor="let i of users">
+    <div class="card mt-3 "style="width: 18rem;">
+        <div class="card-header d-flex justify-content-between">
+            {{i.firstname}}
+            <button class="btn btn-primary">
+
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="card-body d-flex">
+            <div>
+                <img src="../../assets/images/user_profile_male_icon_192702.png" class="w-75 card-img-left  " *ngIf="i.gender=='male'" alt="" srcset="">
+                <img src="../../assets/images/user_profile_female_icon_192701(1).png" class="w-75 card-img-left  " *ngIf="i.gender=='female'" alt="" srcset="">
+            </div>
+            <div>
+
+                <h5 class="card-title">{{i.city}}</h5>
+                <p class="card-text">{{i.address}}</p>
+                <a class="">view more</a>
+            </div>
+        </div>
+</div>
+    </div>  
+   </div>
+</div>
+<div class="container mt-5 "*ngIf="listStatus">
+
+    <table class="table table-hover">
+        <thead>
+<tr>
+    <th>
+        
+    </th>
+    <th>
+firstname
+    </th>
+    <th>
+lastname
+    </th>
+    <th>
+Address
+    </th>
+    <th>
+city
+    </th>
+ 
+    <th>
+Order Total
+    </th>
+</tr>
+        </thead>
+        <tbody>
+<tr *ngFor="let i of users">
+    <td> <img src="../../assets/images/user_profile_male_icon_192702.png" class="  img-responsive  " *ngIf="i.gender=='male'" alt="" style="height: 52px;width:52px; " srcset="">
+        <img src="../../assets/images/user_profile_female_icon_192701(1).png" class= " img-responsive  " *ngIf="i.gender=='female'"  style="height: 52px;width:52px; " alt="" srcset="">
+  </td>
+    <td>{{i.firstname}}</td>
+    <td>{{i.lastname}}</td>
+    <td>{{i.address}}</td>
+    <td>{{i.city}}</td>
+ 
+    <td></td>
+</tr>
+        </tbody>
+
+      </table>
+</div>
+</div>
+</div>
+
+

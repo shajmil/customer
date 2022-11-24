@@ -6,9 +6,11 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
+
+
+import {MatSidenavModule} from '@angular/material/sidenav'; 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-
+import{MatIconModule}  from '@angular/material/icon';
 import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
 import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
@@ -27,6 +29,8 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
 import { OrdersComponent } from './orders/orders.component';
+import { ListviewComponent } from './listview/listview.component';
+import { AboutComponent } from './about/about.component';
 
 
 
@@ -34,15 +38,18 @@ import { OrdersComponent } from './orders/orders.component';
   declarations: [
     AppComponent,
     LoginComponent,
-
-    DashboardComponent,
-    NavbarComponent,
+ DashboardComponent,
+ NavbarComponent,
     OrdersComponent,
+    ListviewComponent,
+    AboutComponent,
+
 
 
 
   ],
-  imports: [
+  imports: [MatIconModule,
+    MatSidenavModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

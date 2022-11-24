@@ -1,3 +1,21 @@
 
+.side {
+  padding: 0;
+  width:100%;
+  // position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  height: 100vh;
+  // z-index: -3!important;
+  right: 0;
 
-/* Please ❤ this if you like it! */
+}
+
+.size1{
+  width: 28rem !important;
+  height: 100vh;
+  // position: absolute;
+  // overflow:visible ;
+  // z-index: 999 !important;
+}

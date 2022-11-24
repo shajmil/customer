@@ -1,100 +1,226 @@
 <!-- Primary -->
 <app-navbar  ></app-navbar>
 <div class="container-fluid pt-3">
+    <div>
 
+        <mat-sidenav-container
+        class="example-container side bg-white" (backdropClick)="close('backdrop')" >
+        <div>
+            <h3 class="text-dark fs-5 ps-3">   <i class="fa fa-user " aria-hidden="true"></i> Customers</h3>
+
+            
+            <div class="container-fluid  mt-5">
     
-    <h3 class=" text-dark ps-3">   <i class="fa fa-user " aria-hidden="true"></i> Customers</h3>
-
-    <div class="container-fluid  mt-5">
-
-        <div class="d-sm-flex justify-content-between">
-<div class="d-flex gap-5">
-    <a (click)="card()"> Card View</a>
-    <a (click)="list()"> List View</a>
-    <a (click)="new()"> New Customer</a>
-</div>
-<div>
-    <label for="search bg-text">filter</label>
-    <input class="form-control" type="text"  name="" [(ngModel)]="filter " (ngModelChange)="search()">
-    <p>{{filter}}</p>
-</div>
-
-
-
-        </div>
-
-
-<div class="container-fluid "*ngIf="cardStatus">
-
-    <div class="row mt-5 ">
-        <div class="col-md-6 col-lg-4 d-flex justify-content-center" *ngFor="let i of users">
-    <div class="card mt-3 "style="width: 18rem;">
-        <div class="card-header d-flex justify-content-between">
-            {{i.firstname}}
-            <button class="btn btn-primary">
-
-                <i class="fa fa-pencil" aria-hidden="true"></i>
-            </button>
-        </div>
-        <div class="card-body d-flex">
-            <div>
-                <img src="../../assets/images/user_profile_male_icon_192702.png" class="w-75 card-img-left  " *ngIf="i.gender=='male'" alt="" srcset="">
-                <img src="../../assets/images/user_profile_female_icon_192701(1).png" class="w-75 card-img-left  " *ngIf="i.gender=='female'" alt="" srcset="">
+            <div class="d-sm-flex justify-content-between">
+    <div class="d-flex gap-5">
+        <a (click)="card()"> Card View</a>
+        <a (click)="list()"> List View</a>
+        <a (click)="new()"  mat-button (click)="sidenav.open()" > New Customer</a>
+    </div>
+    <div>
+        <label for="search bg-text">filter</label>
+        <input class="form-control" type="text"  name="" [(ngModel)]="filter " (ngModelChange)="search()">
+        <p>{{filter}}</p>
+    </div>
+    
+    
+    
             </div>
-            <div>
-
-                <h5 class="card-title">{{i.city}}</h5>
-                <p class="card-text">{{i.address}}</p>
-                <a class="">view more</a>
+    
+    
+    <div class="container-fluid "*ngIf="cardStatus">
+    
+        <div class="row mt-5 ">
+            <div class="col-md-6 col-lg-4 d-flex justify-content-center" *ngFor="let i of users">
+        <div class="card mt-3 "style="width: 18rem;">
+            <div class="card-header d-flex justify-content-between">
+                {{i.firstname}}
+                <button class="btn btn-primary" mat-button (click)="sidenav.open()" (click)="uptd(i)">
+    
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </button>
             </div>
-        </div>
-</div>
-    </div>  
-   </div>
-</div>
-<div class="container mt-5 "*ngIf="listStatus">
-
-    <table class="table table-hover">
-        <thead>
-<tr>
-    <th>
+            <div class="card-body d-flex justify-content-around" >
+                <div>
+                    <img src="../../assets/images/user_profile_male_icon_192702.png" class="   " style="height: 72px;width: 72px;" *ngIf="i.gender=='male'" alt="" srcset="">
+                    <img src="../../assets/images/user_profile_female_icon_192701(1).png" class="  "style="height: 72px;width: 72px;"  *ngIf="i.gender=='female'" alt="" srcset="">
+                </div>
+                <div>
+    
+                    <h5 class="card-title">{{i.city}}</h5>
+                    <p class="card-text">{{i.address}}</p>
+                    <a class="border-bottom border-4 text-primary  " (click)="view(i)  "  (click)="sidenav.open()">view more</a>
+                </div>
+            </div>
+    </div>
+        </div>  
+       </div>
+    </div>
+    <app-listview [item]="users" [listStatus]="listStatus"  ></app-listview>
+    </div>
+    </div>
         
-    </th>
-    <th>
-firstname
-    </th>
-    <th>
-lastname
-    </th>
-    <th>
-Address
-    </th>
-    <th>
-city
-    </th>
- 
-    <th>
-Order Total
-    </th>
-</tr>
-        </thead>
-        <tbody>
-<tr *ngFor="let i of users">
-    <td> <img src="../../assets/images/user_profile_male_icon_192702.png" class="  img-responsive  " *ngIf="i.gender=='male'" alt="" style="height: 52px;width:52px; " srcset="">
-        <img src="../../assets/images/user_profile_female_icon_192701(1).png" class= " img-responsive  " *ngIf="i.gender=='female'"  style="height: 52px;width:52px; " alt="" srcset="">
-  </td>
-    <td>{{i.firstname}}</td>
-    <td>{{i.lastname}}</td>
-    <td>{{i.address}}</td>
-    <td>{{i.city}}</td>
- 
-    <td></td>
-</tr>
-        </tbody>
+    <mat-sidenav class="h-100 size1 bg-light"  position="end" #sidenav (keydown.escape)="close('escape')" disableClose>
+        
+        <form class="p-3"  [formGroup]="formGroup" *ngIf="newStatus"> 
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">firstname</label>
+                   
+                    <input type="text" class="form-control" id="firstname" formControlName="firstname"  type="text" name="firstname" >
+                    <p [ngStyle]="{color:'red'}" *ngIf=" f.firstname.errors?.['required'] && f.firstname?.touched"> this field must not be empty</p>
+              
+                  </div>
+                  <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">lastname</label>
+                      
+                      <input type="text" class="form-control" id="lastname" formControlName="lastname"  type="text" name="lastname" >
+                      <p [ngStyle]="{color:'red'}" *ngIf=" f.lastname.errors?.['required'] && f.lastname?.touched"> this field must not be empty</p>
+                      
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Email address</label>
+                  
+                      <input type="email" class="form-control" id="email"  formControlName="email"  type="text" name="email" aria-describedby="emailHelp">
+                      <p [ngStyle]="{color:'red'}" *ngIf=" f.email.errors?.['pattern'] && f.email?.touched"> enter valid email</p>
+    
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label"> address</label>
+                    <textarea  class="form-control" id="address"  formControlName="address"  type="text" name="address" aria-describedby="addressHelp" name="" id="" cols="5" rows="5"></textarea>
+                  
+      
+                      </div>    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">City</label>
+                    
+                        <input type="city" class="form-control" id="city"  formControlName="city"  type="text" name="city" aria-describedby="cityHelp">
+                        <p [ngStyle]="{color:'red'}" *ngIf=" f.city.errors?.['pattern'] && f.city?.touched"> enter valid email</p>
+      
+                      </div>
+                    <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">gender</label>
+                  <input
+                  type="radio"
+                  id="male"
+                  name="sample"
+                  value="male"
+                  (change)="onChange($event)"
+                  checked /> 
+                  <label for="a">Male</label> 
+                  
+                  <input
+                  type="radio"
+                  id="female"
+                  name="sample"
+                  value="female"
+                  (change)="onChange($event)" />
+                  <label for="b">female</label>
+               
+                </div>
+            <div class="d-flex justify-content-between">
 
-      </table>
+            
+              <button type="submit" class="btn btn-success"  (click)="close('toggle button')" (click)="add()">Submit</button>
+              <button type="submit" class="btn btn-danger "  (click)="close('toggle button')">Close</button>
+
+            </div>
+              </form>
+        <form class="p-3"  [formGroup]="formGroup" *ngIf="viewStatus">
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">firstname</label>
+                   
+                    <input type="text" class="form-control" id="lastname" formControlName="firstname"  type="text" name="firstname" readonly >
+                    <p [ngStyle]="{color:'red'}" *ngIf=" f.firstname.errors?.['required'] && f.firstname?.touched"> this field must not be empty</p>
+              
+                  </div>
+                  <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">lastname</label>
+                      
+                      <input type="text" class="form-control" id="lastname" formControlName="lastname"  type="text" name="lastname"  readonly >
+                      <p [ngStyle]="{color:'red'}" *ngIf=" f.lastname.errors?.['required'] && f.lastname?.touched"> this field must not be empty</p>
+                      
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Email address</label>
+                  
+                      <input type="email" class="form-control" id="email"  formControlName="email"  type="text" name="email" aria-describedby="emailHelp" readonly>
+                      <p [ngStyle]="{color:'red'}" *ngIf=" f.email.errors?.['pattern'] && f.email?.touched"> enter valid email</p>
+    
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">City</label>
+                  
+                      <input type="city" class="form-control" id="city"  formControlName="city"  type="text" name="city" aria-describedby="cityHelp" readonly>
+                      <p [ngStyle]="{color:'red'}" *ngIf=" f.city.errors?.['pattern'] && f.city?.touched"> enter valid email</p>
+    
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label"> address</label>
+                    <textarea  class="form-control" id="address"  formControlName="address"  type="text" name="address" aria-describedby="addressHelp" name="" id="" cols="5" rows="5" readonly></textarea>
+                  
+      
+                      </div>
+              
+            <div class="d-flex justify-content-between">
+
+              <button type="submit" class="btn btn-danger "  (click)="close('toggle button') " (click)="delete()">Delete</button>
+              <button type="submit" class="btn btn-primary "  (click)="close('toggle button')">Close</button>
+            </div>
+              </form>
+
+              <form class="p-3"  [formGroup]="formGroup" *ngIf="uptdStatus">
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">firstname</label>
+                 
+                  <input type="text" class="form-control" id="lastname" formControlName="firstname"  type="text" name="firstname" >
+                  <p [ngStyle]="{color:'red'}" *ngIf=" f.firstname.errors?.['required'] && f.firstname?.touched"> this field must not be empty</p>
+            
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">lastname</label>
+                    
+                    <input type="text" class="form-control" id="lastname" formControlName="lastname"  type="text" name="lastname" >
+                    <p [ngStyle]="{color:'red'}" *ngIf=" f.lastname.errors?.['required'] && f.lastname?.touched"> this field must not be empty</p>
+                    
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                
+                    <input type="email" class="form-control" id="email"  formControlName="email"  type="text" name="email" aria-describedby="emailHelp">
+                    <p [ngStyle]="{color:'red'}" *ngIf=" f.email.errors?.['pattern'] && f.email?.touched"> enter valid email</p>
+  
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">City</label>
+                
+                    <input type="city" class="form-control" id="city"  formControlName="city"  type="text" name="city" aria-describedby="cityHelp">
+                    <p [ngStyle]="{color:'red'}" *ngIf=" f.city.errors?.['pattern'] && f.city?.touched"> enter valid email</p>
+  
+                  </div>
+                  <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label"> address</label>
+                  <textarea  class="form-control" id="address"  formControlName="address"  type="text" name="address" aria-describedby="addressHelp" name="" id="" cols="5" rows="5"></textarea>
+                
+    
+                    </div>
+            
+          <div class="d-flex justify-content-between">
+
+            <button type="submit" class="btn btn-primary "  (click)="close('toggle button')" (click)="update()">Update</button>
+            <button type="submit" class="btn btn-danger "  (click)="close('toggle button')">Close</button>
+          </div>
+            </form>
+        </mat-sidenav>
+        
+        
+            <!-- <p><button mat-button >Open</button></p>
+            <p>Closed due to: {{reason}}</p> -->
+       
+    </mat-sidenav-container>
+    
 </div>
+  
+
 </div>
-</div>
+
 
 

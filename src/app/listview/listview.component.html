@@ -1,0 +1,42 @@
+<div class="container mt-5 "*ngIf="listStatus">
+        
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+        
+    </th>
+    <th>
+firstname
+    </th>
+    <th>
+lastname
+    </th>
+    <th>
+Address
+    </th>
+    <th>
+city
+    </th>
+ 
+    <th>
+Order Total
+    </th>
+</tr>
+        </thead>
+        <tbody>
+<tr *ngFor="let i of item">
+    <td> <img src="../../assets/images/user_profile_male_icon_192702.png" class="  img-responsive  " *ngIf="i.gender=='male'" alt="" style="height: 52px;width:52px; " srcset="">
+        <img src="../../assets/images/user_profile_female_icon_192701(1).png" class= " img-responsive  " *ngIf="i.gender=='female'"  style="height: 52px;width:52px; " alt="" srcset="">
+  </td>
+    <td>{{i.firstname}}</td>
+    <td>{{i.lastname}}</td>
+    <td>{{i.address}}</td>
+    <td>{{i.city}}</td>
+ 
+    <td></td>
+</tr>
+        </tbody>
+
+      </table>
+</div>

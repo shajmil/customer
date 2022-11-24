@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
   providedIn: 'root'
 })
 export class DatabaseService {
-  id:any=3
+  id:any=6
   currentUser:any;
   currentAcno:any;
 
@@ -15,6 +15,9 @@ export class DatabaseService {
  {id:1,firstname:'Allwin',lastname:'shaji',email:"allwinshaji@gmail.com",city:"ernakulam",address:"345 2nd street",gender:"male"},
  {id:2,firstname:'shajmil',lastname:'jamal',email:"shajmil@gmail.com",city:"ernakulam",address:" 2 angamaly street",gender:"male"},
  {id:3,firstname:'sana',lastname:'sajid',email:"sanasajid@gmail.com",city:"ernakulam",address:"345 2nd street",gender:"female"},
+ {id:4,firstname:'fayas',lastname:'jabbar',email:"fayasJabbar@gmail.com",city:"ernakulam",address:"vadakkethalakkal",gender:"male"},
+ {id:5,firstname:'sandhra',lastname:'francis',email:"san@gmai.com",city:"ernakulam",address:"puthyaveetil house",gender:"female"},
+ {id:6,firstname:'sharik',lastname:'sajid',email:"shariksajid@gmail.com",city:"ernakulam",address:"3 street",gender:"male"},
 
  ]
   details: any;
@@ -96,6 +99,7 @@ remove(t:any){
   this.userDetails.splice(this.userDetails.findIndex((a: { id: any; }) => a.id === t) , 1)
   // this.todo.splice(t,1)
   this.saveDetails()
+  return true
   }
 
   

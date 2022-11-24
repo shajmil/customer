@@ -31,6 +31,9 @@ email:any
   }
   type:any='male';
   users:any
+  totalRecords:any;
+  page:any=1
+
   filter:any
   showFiller = false;
   uptdStatus:any=false
@@ -41,8 +44,8 @@ email:any
   constructor(private ds:DatabaseService,private fs:FormBuilder ,private route:Router,private fb:FormBuilder) {
 
 this.users=this.ds.userDetails
-console.log(this.users);
-
+// console.log(this.users);
+this.totalRecords=this.users.length
    }
 
 
@@ -64,6 +67,7 @@ console.log(this.users);
   }
 
 view(t:any){
+  console.log(t);
   this.viewStatus=true;
   this.newStatus=false;
   this.uptdStatus=false
@@ -193,7 +197,14 @@ return re.firstname.toLocaleLowerCase().match(this.filter.toLocaleLowerCase())
 }
 delete(){
   
-  this.ds.remove( this.id)
-  }
+  let result=this.ds.remove(this.id)
+  if(result){
+    Swal.fire({
+      icon:'success',
+      title:'You have successfully deleted!'
+     } ).then(() => {
+      this.filter=""
+      this.ngOnInit() 
+     })
 
-}
+}}}

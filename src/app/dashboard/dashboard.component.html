@@ -31,8 +31,11 @@
     <div class="container-fluid "*ngIf="cardStatus">
     
         <div class="row mt-5 ">
-            <div class="col-md-6 col-lg-4 d-flex justify-content-center" *ngFor="let i of users">
-        <div class="card mt-3 "style="width: 18rem;">
+            <div class="col-md-6 col-lg-4 d-flex justify-content-center" *ngFor="let i of users |paginate: { id: 'card',
+            itemsPerPage:10,
+            currentPage: page,
+            totalItems: totalRecords }">
+        <div class="card mt-3 "style="width: 23rem;">
             <div class="card-header d-flex justify-content-between">
                 {{i.firstname}}
                 <button class="btn btn-primary" mat-button (click)="sidenav.open()" (click)="uptd(i)">
@@ -55,6 +58,12 @@
     </div>
         </div>  
        </div>
+       <div  class="mt-5">
+
+         <pagination-controls id="card" (pageChange)="page=$event">
+           
+        </pagination-controls>
+      </div>
     </div>
     <app-listview [item]="users" [listStatus]="listStatus"  ></app-listview>
     </div>
@@ -129,28 +138,28 @@
                     <label for="exampleInputPassword1" class="form-label">firstname</label>
                    
                     <input type="text" class="form-control" id="lastname" formControlName="firstname"  type="text" name="firstname" readonly >
-                    <p [ngStyle]="{color:'red'}" *ngIf=" f.firstname.errors?.['required'] && f.firstname?.touched"> this field must not be empty</p>
+                    <!-- <p [ngStyle]="{color:'red'}" *ngIf=" f.firstname.errors?.['required'] && f.firstname?.touched"> this field must not be empty</p> -->
               
                   </div>
                   <div class="mb-3">
                       <label for="exampleInputPassword1" class="form-label">lastname</label>
                       
                       <input type="text" class="form-control" id="lastname" formControlName="lastname"  type="text" name="lastname"  readonly >
-                      <p [ngStyle]="{color:'red'}" *ngIf=" f.lastname.errors?.['required'] && f.lastname?.touched"> this field must not be empty</p>
+                      <!-- <p [ngStyle]="{color:'red'}" *ngIf=" f.lastname.errors?.['required'] && f.lastname?.touched"> this field must not be empty</p> -->
                       
                     </div>
                     <div class="mb-3">
                       <label for="exampleInputEmail1" class="form-label">Email address</label>
                   
                       <input type="email" class="form-control" id="email"  formControlName="email"  type="text" name="email" aria-describedby="emailHelp" readonly>
-                      <p [ngStyle]="{color:'red'}" *ngIf=" f.email.errors?.['pattern'] && f.email?.touched"> enter valid email</p>
+                      <!-- <p [ngStyle]="{color:'red'}" *ngIf=" f.email.errors?.['pattern'] && f.email?.touched"> enter valid email</p> -->
     
                     </div>
                     <div class="mb-3">
                       <label for="exampleInputEmail1" class="form-label">City</label>
                   
                       <input type="city" class="form-control" id="city"  formControlName="city"  type="text" name="city" aria-describedby="cityHelp" readonly>
-                      <p [ngStyle]="{color:'red'}" *ngIf=" f.city.errors?.['pattern'] && f.city?.touched"> enter valid email</p>
+                      <!-- <p [ngStyle]="{color:'red'}" *ngIf=" f.city.errors?.['pattern'] && f.city?.touched"> enter valid email</p> -->
     
                     </div>
                     <div class="mb-3">

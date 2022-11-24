@@ -31,7 +31,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { OrdersComponent } from './orders/orders.component';
 import { ListviewComponent } from './listview/listview.component';
 import { AboutComponent } from './about/about.component';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -70,7 +70,8 @@ import { AboutComponent } from './about/about.component';
     MdbTooltipModule,
     MdbValidationModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [],

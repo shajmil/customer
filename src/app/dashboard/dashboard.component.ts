@@ -103,11 +103,11 @@ this.uptdStatus=true
   this.newStatus=false
   this.index = this.users.findIndex((a: { firstname: any; }) => a.firstname === this.firstname)
  this.id=t.id
-  let email=document.getElementById('email')?.innerHTML==""?t.email:' '
-  let lastname=document.getElementById('lastname')?.innerHTML==""?t.lastname:' '
-  let firstname=document.getElementById('lastname')?.innerHTML==""?t.firstname:' '
-  let address=document.getElementById('lastname')?.innerHTML==""?t.address:' '
-  let city=document.getElementById('city')?.innerHTML==""?t.city:' '
+  let email=document.getElementById('email')?.innerHTML==""?t.email:t.email
+  let lastname=document.getElementById('lastname')?.innerHTML==""?t.lastname:t.lastname
+  let firstname=document.getElementById('lastname')?.innerHTML==""?t.firstname:t.firstname
+  let address=document.getElementById('lastname')?.innerHTML==""?t.address:t.address
+  let city=document.getElementById('city')?.innerHTML==""?t.city:t.city
   // let email=document.getElementById('email')?.innerHTML==""?t.email:' '
   // console.log('email: ', ema);
   this.formGroup.get('email')?.setValue(email);
@@ -148,12 +148,12 @@ this.uptdStatus=false
   this.newStatus=true
   this.viewStatus=false
   this.formGroup.get('email')?.setValue('');
-  this.formGroup.get('lastname')?.setValue(' ');
-  this.formGroup.get('firstname')?.setValue(' ');
-  this.formGroup.get('address')?.setValue(' ');
+  this.formGroup.get('lastname')?.setValue('');
+  this.formGroup.get('firstname')?.setValue('');
+  this.formGroup.get('address')?.setValue('');
 
-  this.formGroup.get('gender')?.setValue(' ');
-  this.formGroup.get('city')?.setValue(' ');
+  this.formGroup.get('gender')?.setValue('');
+  this.formGroup.get('city')?.setValue('');
 }
 
 

@@ -52,8 +52,8 @@ this.users=this.ds.userDetails
 
    formGroup=this.fb.group({
     email:['',[Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"),Validators.required]],
-    lastname:['',[Validators.required]],
-    firstname:['',[Validators.required]],
+    lastname:['',[Validators.required,Validators.pattern('[a-zA-Z]*')]],
+    firstname:['',[Validators.required,Validators.pattern('[a-zA-Z]*')]],
     gender:[''],
     address:[''],
     city:[''],
@@ -128,7 +128,14 @@ update(){
  var index= this.index 
  var id =this.id
  var gender=this.type
-  var result=this.ds.update(email,city,firstname,lastname,address,index,id,gender)
+ if(this.formGroup.valid){
+  var result=this.ds.update(email,city,firstname,lastname,address,index,id,gender)} else{
+    Swal.fire({
+      icon: 'error',
+      title: 'Please fill form ',
+     
+    })
+  }
 }
 
 onChange(e:any) {

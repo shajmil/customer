@@ -73,21 +73,21 @@
         
         <form class="p-3"  [formGroup]="formGroup" *ngIf="newStatus"> 
                   <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">firstname</label>
+                    <label for="exampleInputPassword1" class="form-label">firstname <span class="text-danger"> *</span></label>
                    
                     <input type="text" class="form-control" id="firstname" formControlName="firstname"  type="text" name="firstname" >
                     <p [ngStyle]="{color:'red'}" *ngIf=" f.firstname.errors?.['required'] && f.firstname?.touched"> this field must not be empty</p>
               
                   </div>
                   <div class="mb-3">
-                      <label for="exampleInputPassword1" class="form-label">lastname</label>
+                      <label for="exampleInputPassword1" class="form-label">lastname   <span class="text-danger"> *</span></label>
                       
                       <input type="text" class="form-control" id="lastname" formControlName="lastname"  type="text" name="lastname" >
                       <p [ngStyle]="{color:'red'}" *ngIf=" f.lastname.errors?.['required'] && f.lastname?.touched"> this field must not be empty</p>
                       
                     </div>
                     <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">Email address</label>
+                      <label for="exampleInputEmail1" class="form-label">Email address  <span class="text-danger"> *</span></label>
                   
                       <input type="email" class="form-control" id="email"  formControlName="email"  type="text" name="email" aria-describedby="emailHelp">
                       <p [ngStyle]="{color:'red'}" *ngIf=" f.email.errors?.['pattern'] && f.email?.touched"> enter valid email</p>
@@ -178,21 +178,21 @@
 
               <form class="p-3"  [formGroup]="formGroup" *ngIf="uptdStatus">
                 <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">firstname</label>
+                  <label for="exampleInputPassword1" class="form-label">firstname  <span class="text-danger"> *</span></label>
                  
                   <input type="text" class="form-control" id="lastname" formControlName="firstname"  type="text" name="firstname" >
                   <p [ngStyle]="{color:'red'}" *ngIf=" f.firstname.errors?.['required'] && f.firstname?.touched"> this field must not be empty</p>
             
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">lastname</label>
+                    <label for="exampleInputPassword1" class="form-label">lastname  <span class="text-danger"> *</span></label>
                     
                     <input type="text" class="form-control" id="lastname" formControlName="lastname"  type="text" name="lastname" >
                     <p [ngStyle]="{color:'red'}" *ngIf=" f.lastname.errors?.['required'] && f.lastname?.touched"> this field must not be empty</p>
                     
                   </div>
                   <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <label for="exampleInputEmail1" class="form-label">Email address  <span class="text-danger"> *</span></label>
                 
                     <input type="email" class="form-control" id="email"  formControlName="email"  type="text" name="email" aria-describedby="emailHelp">
                     <p [ngStyle]="{color:'red'}" *ngIf=" f.email.errors?.['pattern'] && f.email?.touched"> enter valid email</p>

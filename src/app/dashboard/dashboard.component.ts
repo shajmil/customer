@@ -95,7 +95,7 @@ view(t:any){
 
 
 uptd(t:any){
-console.log(t);
+// console.log(t);
 this.firstname=t.firstname
 this.lastname=t.lastname
 this.viewStatus=false
@@ -140,7 +140,7 @@ update(){
 
 onChange(e:any) {
   this.type= e.target.value;
-  console.log('this.type: ', this.type);
+  // console.log('this.type: ', this.type);
 }
 
 new(){

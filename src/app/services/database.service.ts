@@ -28,11 +28,11 @@ constructor(private route:Router) {
   this. details=this.userDetails
   this.getDetails();
   this.saveDetails();
-    // console.log('userDetails: ', this.userDetails);
+
   }
   
 saveDetails(){
-  console.log(this.userDetails);
+
   if(  this.userDetails){
 
    
@@ -65,7 +65,7 @@ getDetails(){
 add(email:any,city:any,firstname:any,lastname:any,address:any,gender:any){
   
   var details = this.userDetails
-  console.log('details: ', details);
+  // console.log('details: ', details);
   
 
   var id = this.id++
@@ -75,7 +75,7 @@ add(email:any,city:any,firstname:any,lastname:any,address:any,gender:any){
       })
       // console.log(data);
   //  data.map((i: { id: any; })=>console.log(i));
-  console.log(details);
+  // console.log(details);
   this.saveDetails()
   
 

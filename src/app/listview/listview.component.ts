@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DatabaseService } from '../services/database.service';
-import { NgxPaginationModule } from 'ngx-pagination';
+// import { NgxPaginationModule } from 'ngx-pagination';
 @Component({
   selector: 'app-listview',
   templateUrl: './listview.component.html',
@@ -9,18 +9,18 @@ import { NgxPaginationModule } from 'ngx-pagination';
 export class ListviewComponent implements OnInit {
   @Input() item:any
   @Input() listStatus:any
-  totalRecords:any;
+  @Input() total:any
+ 
   page:any=1
   users: any;
 
   constructor(private ds:DatabaseService) {
-    this.users=this.ds.userDetails
     // console.log(this.users);
-    this.totalRecords=this.users.length
     
-   }
-
+  }
+  
   ngOnInit(): void {
+  this.users=this.ds.userDetails
   }
 
 }

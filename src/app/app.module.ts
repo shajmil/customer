@@ -32,6 +32,8 @@ import { OrdersComponent } from './orders/orders.component';
 import { ListviewComponent } from './listview/listview.component';
 import { AboutComponent } from './about/about.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { DemoComponent } from './about/demo/demo.component';
+import { ProductsComponent } from './about/products/products.component';
 
 
 @NgModule({
@@ -43,6 +45,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     OrdersComponent,
     ListviewComponent,
     AboutComponent,
+    DemoComponent,
+    ProductsComponent,
 
 
 

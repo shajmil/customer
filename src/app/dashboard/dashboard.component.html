@@ -32,7 +32,7 @@
     
         <div class="row mt-5 ">
             <div class="col-md-6 col-lg-4 d-flex justify-content-center" *ngFor="let i of users |paginate: { id: 'card',
-            itemsPerPage:10,
+            itemsPerPage:9,
             currentPage: page,
             totalItems: totalRecords }">
         <div class="card mt-3 "style="width: 23rem;">
@@ -65,7 +65,7 @@
         </pagination-controls>
       </div>
     </div>
-    <app-listview [item]="users" [listStatus]="listStatus"  ></app-listview>
+    <app-listview [item]="users" [listStatus]="listStatus" [total]="totalRecords" ></app-listview>
     </div>
     </div>
         

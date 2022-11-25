@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
   providedIn: 'root'
 })
 export class DatabaseService {
-  id:any=6
+  id:any=7
   currentUser:any;
   currentAcno:any;
 
@@ -18,9 +18,11 @@ export class DatabaseService {
  {id:4,firstname:'fayas',lastname:'jabbar',email:"fayasJabbar@gmail.com",city:"ernakulam",address:"vadakkethalakkal",gender:"male"},
  {id:5,firstname:'sandhra',lastname:'francis',email:"san@gmai.com",city:"ernakulam",address:"puthyaveetil house",gender:"female"},
  {id:6,firstname:'sharik',lastname:'sajid',email:"shariksajid@gmail.com",city:"ernakulam",address:"3 street",gender:"male"},
+ {id:7,firstname:'amritha',lastname:'luminar',email:"amritha@gmail.com",city:"ernakulam",address:"luminar technolab",gender:"female"},
 
  ]
   details: any;
+  totalRecords: any;
  
 constructor(private route:Router) { 
   this. details=this.userDetails
@@ -36,7 +38,7 @@ saveDetails(){
    
     
       localStorage.setItem('userDetails',JSON.stringify(this.userDetails));
-      
+      this.totalRecords=this.userDetails.length
     }else{
     }
     if(this.id){

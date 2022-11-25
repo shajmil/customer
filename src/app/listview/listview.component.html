@@ -26,9 +26,9 @@ Order Total
         </thead>
         <tbody>
 <tr *ngFor="let i of item |paginate: { id: 'foo',
-itemsPerPage:6,
+itemsPerPage:7,
 currentPage: page,
-totalItems: totalRecords }">
+totalItems: total }">
     <td> <img src="../../assets/images/user_profile_male_icon_192702.png" class="  img-responsive  " *ngIf="i.gender=='male'" alt="" style="height: 52px;width:52px; " srcset="">
         <img src="../../assets/images/user_profile_female_icon_192701(1).png" class= " img-responsive  " *ngIf="i.gender=='female'"  style="height: 52px;width:52px; " alt="" srcset="">
   </td>

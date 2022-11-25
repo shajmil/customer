@@ -45,7 +45,7 @@ email:any
 
 this.users=this.ds.userDetails
 // console.log(this.users);
-this.totalRecords=this.users.length
+
    }
 
 
@@ -63,7 +63,7 @@ this.totalRecords=this.users.length
 
   ngOnInit(): void {
     this.users=this.ds.userDetails
-  
+    this.totalRecords=this.users.length
   }
 
 view(t:any){
@@ -165,7 +165,10 @@ if(result){
     'Good job!',
     'You have successfully registered!',
     'success'
-  )
+  ).then(() => {
+    this.filter=""
+    this.ngOnInit() 
+   })
 }}
   else{
     Swal.fire({

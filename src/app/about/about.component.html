@@ -1,26 +1,65 @@
 <app-navbar></app-navbar>
-<div class="d-flex h-100 text-center text-white bg-dark">
+<div class="vh-100 bg-dark">
+<div class="row  vw-100 text-center text-dark text-white bg-dark">
+
+<div class="col-1"></div>
+<div class="col-3  text-white bg-dark justify-self-start" >
+
+  <hr>
+  <ul class="nav nav-pills flex-column mb-auto ">
     
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <li>
+      <a href="/about" class="nav-link  text-dark">
+        Dashboard
+      </a>
+    </li>
+    <li>
+      <a href="/about#demo" class="nav-link text-dark">
+    
+     Demo
+      </a>
+    </li>
+    <li>
+      <a href="/about#products" class="nav-link text-dark">
+        Products
+      </a>
+    </li>
+   
+  </ul>
+  <hr>
+
+</div>
+
+<div class="col-7  text-center text-dark bg-dark">
+    
+    <div class="container d-flex  h-100 p-3  flex-column">
     <header class="mb-auto">
       <div>
       
-        <nav class="nav nav-masthead justify-content-center float-md-end">
+        <nav class="nav nav-masthead justify-content-center ">
          
         </nav>
       </div>
     </header>
   
-    <main class="px-3">
-      <h1>About page.</h1>
+
+    <main class="px-3 pb-5" id="demo"  *ngIf="route.url === '/about#demo'">
+      <app-demo></app-demo>
+    </main>
+    <main class="px-3 pb-5" id="demo"  *ngIf="route.url === '/about#products'">
+      <app-products></app-products>
+    </main>
+    <main class="px-3" id="dashboard"  *ngIf="route.url === '/about'">
+      <h1 class="text-white">Dashboard.</h1>
       <p class="lead"></p>
       <p class="lead">
         <a href="/dashboard" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Learn more</a>
       </p>
     </main>
   
-    <footer class="mt-auto text-white-50">
+    <footer class="mt-auto text-dark-50">
     </footer>
   </div>
   
-    </div>
+    </div>  
+  </div></div>

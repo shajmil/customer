@@ -20,7 +20,7 @@
     <div>
         <label for="search bg-text">filter</label>
         <input class="form-control" type="text"  name="" [(ngModel)]="filter " (ngModelChange)="search()">
-        <p>{{filter}}</p>
+   
     </div>
     
     
@@ -37,7 +37,7 @@
             totalItems: totalRecords }">
         <div class="card mt-3 "style="width: 23rem;">
             <div class="card-header d-flex justify-content-between">
-                {{i.firstname}}
+                {{i.firstname}}  {{i.lastname}}
                 <button class="btn btn-primary" mat-button (click)="sidenav.open()" (click)="uptd(i)">
     
                     <i class="fa fa-pencil" aria-hidden="true"></i>
@@ -134,6 +134,7 @@
             </div>
               </form>
         <form class="p-3"  [formGroup]="formGroup" *ngIf="viewStatus">
+          
                   <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">firstname</label>
                    
